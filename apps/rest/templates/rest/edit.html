@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Edit User {{user.id}}</h2>
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+            <form action="/users/{{user.id}}/update" method="POST">
+                {%  csrf_token %}
+                <p>First Name:</p>
+                <input type="text" name="input_first_name">
+                <p>Last Name:</p>
+                <input type="text" name="input_last_name">
+                <p>Email:</p>
+                <input type="text" name="input_email"> <br>
+                <input type="submit" value="Update">
+            </form>
+            <p><a href="/users">Show</a> | <a href="/users/{{user.id}}">Go back</a></p>
+        </div>
+    </body>
+</html>
